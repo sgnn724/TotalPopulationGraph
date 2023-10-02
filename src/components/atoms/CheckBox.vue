@@ -12,7 +12,7 @@ defineEmits(['update:modelValue'])
 </script>
 
 <template>
-  <label class="label">
+  <label>
     <input
       type="checkbox"
       v-model="isChecked"
