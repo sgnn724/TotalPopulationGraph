@@ -16,5 +16,9 @@
     "quotes": ["error", "single"],
     "no-console": "warn",
     "eqeqeq": "error"
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   }
 }
