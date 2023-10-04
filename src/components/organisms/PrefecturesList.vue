@@ -5,6 +5,7 @@ import { RepositoryFactory } from '@/repositories/RepositoryFactory'
 
 const prefecturesRepository = RepositoryFactory.get('prefectures')
 const checkboxItems = ref([])
+const multiChecked = ref([])
 const data = await prefecturesRepository.get()
 checkboxItems.value = data.result
 </script>
@@ -15,7 +16,8 @@ checkboxItems.value = data.result
       v-for="(item, index) in checkboxItems"
       :key="index"
       :label="item.prefName"
-      v-model:modelValue="item.isChecked"
+      :prefCode="item.prefCode"
+      v-model="multiChecked"
     />
   </div>
 </template>
