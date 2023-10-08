@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
   label: String,
-  value: Number
+  value: Object
 })
 const label = props.label
 const value = props.value

@@ -4,35 +4,40 @@ import CheckBox from '../atoms/CheckBox.vue'
 import { RepositoryFactory } from '@/repositories/RepositoryFactory'
 
 const props = defineProps({
-  modelValue: Array
+  getPopulation: Function,
+  uncheckedPref: Function
 })
-const emit = defineEmits(['update:modelValue'])
-const checkboxItems = ref([])
+const getPopulation = props.getPopulation
+const uncheckedPref = props.uncheckedPref
+
+const selectedItems = ref([])
+const prefectures = ref([])
+
 const prefecturesRepository = RepositoryFactory.get('prefectures')
 const data = await prefecturesRepository.get()
-checkboxItems.value = data.result
+prefectures.value = data.result
 
-const handleChecked = (e) => {
-  const prefCode = e.target.value
-  const newValue = [...props.modelValue]
-  if (newValue.includes(prefCode)) {
-    const index = newValue.indexOf(prefCode)
-    newValue.splice(index, 1)
+const handleChecked = (item) => {
+  const prefCode = item.prefCode
+  if (selectedItems.value.includes(prefCode)) {
+    const index = selectedItems.value.indexOf(prefCode)
+    selectedItems.value.splice(index, 1)
+    uncheckedPref(item)
   } else {
-    newValue.push(prefCode)
+    selectedItems.value.push(prefCode)
+    getPopulation(item)
   }
-  emit('update:modelValue', newValue)
 }
 </script>
 
 <template>
   <div class="container">
     <CheckBox
-      v-for="(item, index) in checkboxItems"
+      v-for="(item, index) in prefectures"
       :key="index"
       :label="item.prefName"
-      :value="item.prefCode"
-      @input="handleChecked"
+      :value="item"
+      @input="handleChecked(item)"
     />
   </div>
 </template>
