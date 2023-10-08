@@ -6,8 +6,8 @@
 
 ## 環境構築
 
-1. `git clone` 
-2. `cd prj`
+1. `git clone https://github.com/sgnn724/TotalPopulationGraph.git` 
+2. `cd TotalPopulationGraph`
 3. `npm i`
 4. `npm run dev`
 5. `http://localhost:5173/` にアクセスし画面が表示されれば OK
