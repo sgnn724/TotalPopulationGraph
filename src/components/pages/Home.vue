@@ -45,11 +45,16 @@ const uncheckedPref = ({ prefName }) => {
 </script>
 
 <template>
-  <h2>都道府県別の総人口推移グラフ</h2>
-  <p>都道府県</p>
+  <h2 class="title">都道府県別の総人口推移グラフ</h2>
   <PrefecturesList
     :getPopulation="getPopulation"
     :uncheckedPref="uncheckedPref"
   />
   <PopulationChart :chartData="chartData" />
 </template>
+
+<style scoped>
+.title {
+  text-align: center;
+}
+</style>

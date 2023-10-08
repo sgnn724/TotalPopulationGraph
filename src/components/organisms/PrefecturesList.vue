@@ -31,6 +31,7 @@ const handleChecked = (item) => {
 </script>
 
 <template>
+  <p class="label">都道府県</p>
   <div class="container">
     <CheckBox
       v-for="(item, index) in prefectures"
@@ -43,9 +44,14 @@ const handleChecked = (item) => {
 </template>
 
 <style scoped>
+.label {
+  margin-top: 10px;
+  font-weight: 600;
+}
 .container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
+  margin-top: 10px;
 }
 </style>
