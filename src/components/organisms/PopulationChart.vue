@@ -42,6 +42,7 @@ const chartOptions = computed(() => ({
         },
         chartOptions: {
           legend: {
+            layout: 'horizontal',
             align: 'center',
             verticalAlign: 'bottom'
           }
